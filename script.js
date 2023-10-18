@@ -56,3 +56,20 @@ function getDeviceInfo() {
     // Add an event listener to check network status when it changes
     window.addEventListener('online', checkNetworkStatus);
     window.addEventListener('offline', checkNetworkStatus);
+
+// Make an HTTP request to ipinfo.io to get information about the IP address
+fetch('https://ipinfo.io/json')
+  .then(response => response.json())
+  .then(data => {
+    const isp = data.org || "Not available";
+    console.log(`Internet Service Provider: ${isp}`);
+  })
+  .catch(error => console.error('Error fetching IP information', error));
+
+const thirdPartyCode = 'console.log("Hello, third party!");';
+
+try {
+  eval(thirdPartyCode);
+} catch (error) {
+  console.error('Error executing third-party code:', error);
+}
