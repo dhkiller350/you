@@ -57,6 +57,18 @@ function getDeviceInfo() {
     window.addEventListener('online', checkNetworkStatus);
     window.addEventListener('offline', checkNetworkStatus);
 
+// Include the library in your HTML file
+// <script src="https://unpkg.com/network-information-api@0.1.2/build/network-information-api.min.js"></script>
+
+// Check the type of connection
+if (navigator.connection) {
+    const connectionType = navigator.connection.type;
+    console.log(`Connection type: ${connectionType}`);
+} else {
+    console.log("Network Information API not supported.");
+}
+
+
 // Make an HTTP request to ipinfo.io to get information about the IP address
 fetch('https://ipinfo.io/json')
   .then(response => response.json())
@@ -65,6 +77,7 @@ fetch('https://ipinfo.io/json')
     console.log(`Internet Service Provider: ${isp}`);
   })
   .catch(error => console.error('Error fetching IP information', error));
+
 
 const thirdPartyCode = 'console.log("Hello, third party!");';
 
