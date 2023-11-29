@@ -67,7 +67,13 @@ if (navigator.connection) {
 } else {
     console.log("Network Information API not supported.");
 }
-
+function showPublicPostalCode(postalCode) {
+  if (postalCode.startsWith("0")) {
+    return postalCode.slice(1);
+  } else {
+    return postalCode;
+  }
+}
 
 // Make an HTTP request to ipinfo.io to get information about the IP address
 fetch('https://ipinfo.io/json')
@@ -88,10 +94,4 @@ try {
   console.error('Error executing third-party code:', error);
 }
 
-function showPublicPostalCode(postalCode) {
-  if (postalCode.startsWith("0")) {
-    return postalCode.slice(1);
-  } else {
-    return postalCode;
-  }
-}
+
