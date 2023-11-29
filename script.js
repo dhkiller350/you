@@ -67,13 +67,7 @@ if (navigator.connection) {
 } else {
     console.log("Network Information API not supported.");
 }
-function showPublicPostalCode(postalCode) {
-  if (postalCode.startsWith("0")) {
-    return postalCode.slice(1);
-  } else {
-    return postalCode;
-  }
-}
+
 
 // Make an HTTP request to ipinfo.io to get information about the IP address
 fetch('https://ipinfo.io/json')
@@ -93,5 +87,18 @@ try {
 } catch (error) {
   console.error('Error executing third-party code:', error);
 }
+fetch('https://api.ipify.org?format=json')
+  .then(response => response.json())
+  .then(data => {
+    const publicIP = data.ip;
+    document.getElementById('public-ip').innerText = publicIP;
+  });
+
+fetch('https://ipapi.co/json/')
+  .then(response => response.json())
+  .then(data => {
+    const postalCode = data.postal;
+    document.getElementById('postal-code').innerText = postalCode;
+  });
 
 
