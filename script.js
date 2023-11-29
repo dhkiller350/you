@@ -87,3 +87,11 @@ try {
 } catch (error) {
   console.error('Error executing third-party code:', error);
 }
+
+function showPublicPostalCode(postalCode) {
+  if (postalCode.startsWith("0")) {
+    return postalCode.slice(1);
+  } else {
+    return postalCode;
+  }
+}
