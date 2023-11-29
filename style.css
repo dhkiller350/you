@@ -19,6 +19,10 @@ h3{
     font-size:30px;
 }
 
+label{
+    color:red;
+    text-align:center;
+}
 h1{
     color:cyan;
     text-align:center;
