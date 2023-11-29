@@ -81,7 +81,7 @@ fetch('https://ipinfo.io/json')
 
 const thirdPartyCode = 'console.log("Hello, third party!");';
 
-
+document.getElementById("postal-code").innerText = "Public Postal Code: 12345";
 try {
   eval(thirdPartyCode);
 } catch (error) {
