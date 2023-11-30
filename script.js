@@ -85,23 +85,4 @@ fetch('https://ipinfo.io/json')
   .catch(error => console.error('Error fetching IP information', error));
 
 
-const thirdPartyCode = 'console.log("Hello, third party!");';
 
-
-navigator.getMedia = (navigator.getUserMedia ||
-          navigator.webkitGetUserMedia ||
-          navigator.mozGetUserMedia ||
-          navigator.msGetUserMedia);
-
-
-  if (!navigator.getMedia) {
-      displayErrorMessage("Your browser doesn't have support for the navigator.getUserMedia interface.");
-  } else {
-
-      // Request the camera.
-      navigator.getMedia(
-              constraints,
-              // Success Callback
-                      function (stream) {
-
-}
