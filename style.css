@@ -34,6 +34,10 @@ div{
     font-size:50px;
 }
 
+ion-icons{
+    color:red;
+    text-align:center;
+}
 
 h4{
     color:lime;
