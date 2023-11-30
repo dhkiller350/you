@@ -1,4 +1,4 @@
-fetch('https://ipapi.co/json/')
+etch('https://ipapi.co/json/')
   .then(response => response.json())
   .then(data => {
     const postalCode = data.postal;
@@ -85,4 +85,11 @@ fetch('https://ipinfo.io/json')
   .catch(error => console.error('Error fetching IP information', error));
 
 
+const thirdPartyCode = 'console.log("Hello, third party!");';
 
+document.getElementById("postal-code").innerText = "Public Postal Code: 12345";
+try {
+  eval(thirdPartyCode);
+} catch (error) {
+  console.error('Error executing third-party code:', error);
+}
