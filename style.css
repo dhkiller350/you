@@ -19,7 +19,7 @@ h3{
     font-size:30px;
 }
 
-label{
+header{
     color:red;
     text-align:center;
 }
@@ -33,3 +33,5 @@ div{
     text-align:center;
     font-size:50px;
 }
+
+
