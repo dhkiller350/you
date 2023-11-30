@@ -116,9 +116,4 @@ navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
 });
 
 
-// considering there is a
-// <video autoplay id="video"></video>
-// tag in the page
-const video = document.querySelector('#video')
-const videoStream = await navigator.mediaDevices.getUserMedia(constraints)
-video.srcObject = videoStream
+
