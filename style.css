@@ -56,8 +56,8 @@ h1{
 }
 
 .box{
- width: 100px;
-  height: 100px;
+ width: 150px;
+  height: 150px;
   border: 1px solid lime;
   padding: 10px;
   margin: 10px;
@@ -67,6 +67,7 @@ h1{
 header{
     color:red;
     text-align:center;
+    font-size:10px;
 }
     
 li{
