@@ -64,10 +64,9 @@ h1{
   background:black;
 }
 
-header{
+label{
     color:red;
     font-size:10%;
-    text-align:left;
 }
     
 li{
