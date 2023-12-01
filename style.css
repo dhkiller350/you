@@ -64,7 +64,8 @@ h1{
   background:black;
 }
 
-li{
-    color:lime;
-    font-size:20%;
+header{
+    color:red;
+    text-align:center;
 }
+    
