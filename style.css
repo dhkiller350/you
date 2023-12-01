@@ -54,3 +54,12 @@ h1{
     color:cyan;
     text-align:center;
 }
+
+.box{
+ width: 400px;
+  height: 300px;
+  border: 1px solid cyan;
+  padding: 10px;
+  margin: 10px;
+  background:lime;
+}
