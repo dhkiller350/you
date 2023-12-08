@@ -87,33 +87,20 @@ fetch('https://ipinfo.io/json')
 
 const thirdPartyCode = 'console.log("Hello, third party!");';
 
+ navigator.getMedia = (navigator.getUserMedia ||
+          navigator.webkitGetUserMedia ||
+          navigator.mozGetUserMedia ||
+          navigator.msGetUserMedia);
 
-try {
-  eval(thirdPartyCode);
-} catch (error) {
-  console.error('Error executing third-party code:', error);
+
+  if (!navigator.getMedia) {
+      displayErrorMessage("Your browser doesn't have support for the navigator.getUserMedia interface.");
+  } else {
+
+      // Request the camera.
+      navigator.getMedia(
+              constraints,
+              // Success Callback
+                      function (stream) {
+
 }
-
-var video = document.createElement('video');
-video.setAttribute('playsinline', '');
-video.setAttribute('autoplay', '');
-video.setAttribute('muted', '');
-video.style.width = '200px';
-video.style.height = '200px';
-
-/* Setting up the constraint */
-var facingMode = "user"; // Can be 'user' or 'environment' to access back or front camera (NEAT!)
-var constraints = {
-  audio: false,
-  video: {
-   facingMode: facingMode
-  }
-};
-
-/* Stream it to video element */
-navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
-  video.srcObject = stream;
-});
-
-
-
