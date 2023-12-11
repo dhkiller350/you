@@ -122,3 +122,5 @@ video.style.height = '200px';
      function fail(){
          alert('navigator.geolocation failed, may not be supported');
      }
+
+onload="locate()
