@@ -1,10 +1,3 @@
-import {Client} from "@googlemaps/google-maps-services-js";
-const {Client} = require("@googlemaps/google-maps-services-js");
-const {Client} = require("@googlemaps/google-maps-services-js");
-const {Client} = require("@googlemaps/google-maps-services-js");
-
-
-
 fetch('https://ipapi.co/json/')
   .then(response => response.json
     ())
@@ -82,54 +75,5 @@ if (navigator.connection) {
     console.log("Network Information API not supported.");
 }
 
-const client = new Client({});
 
-client
-  .elevation({
-    params: {
-      locations: [{ lat: 45, lng: -110 }],
-      key: process.env.GOOGLE_MAPS_API_KEY,
-    },
-    timeout: 1000, // milliseconds
-  })
-  .then((r) => {
-    console.log(r.data.results[0].elevation);
-  })
-  .catch((e) => {
-    console.log(e.response.data.error_message);
-  });
-
-const client = new Client({});
-
-client
-  .elevation({
-    params: {
-      locations: [{ lat: 45, lng: -110 }],
-      key: process.env.GOOGLE_MAPS_API_KEY
-    },
-    timeout: 1000 // milliseconds
-  }, axiosInstance)
-  .then(r => {
-    console.log(r.data.results[0].elevation);
-  })
-  .catch(e => {
-    console.log(e);
-  });
-
-const client = new Client({});
-
-client
-  .elevation({
-    params: {
-      locations: [{ lat: 45, lng: -110 }],
-      client_id: process.env.GOOGLE_MAPS_CLIENT_ID,
-      client_secret: process.env.GOOGLE_MAPS_CLIENT_SECRET
-    },
-    timeout: 1000 // milliseconds
-  })
-  .then(r => {
-    console.log(r.data.results[0].elevation);
-  })
-  .catch(e => {
-    console.log(e.response.data.error_message);
   });
