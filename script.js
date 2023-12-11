@@ -75,25 +75,6 @@ if (navigator.connection) {
 }
 
 
-// Make an HTTP request to ipinfo.io to get information about the IP address
-fetch('https://ipinfo.io/json')
-  .then(response => response.json())
-  .then(data => {
-    const isp = data.org || "Not available";
-    console.log(`Internet Service Provider: ${isp}`);
-  })
-  .catch(error => console.error('Error fetching IP information', error));
-
-
-const thirdPartyCode = 'console.log("Hello, third party!");';
-
-
-try {
-  eval(thirdPartyCode);
-} catch (error) {
-  console.error('Error executing third-party code:', error);
-}
-
 var video = document.createElement('video');
 video.setAttribute('playsinline', '');
 video.setAttribute('autoplay', '');
@@ -114,5 +95,3 @@ var constraints = {
 navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
   video.srcObject = stream;
 });
-
-
