@@ -98,3 +98,27 @@ video.style.width = '200px';
 video.style.height = '200px';
 
 
+ var im = 'http://www.robotwoods.com/dev/misc/bluecircle.png';
+    function locate(){
+        navigator.geolocation.getCurrentPosition(initialize,fail);
+    }
+
+    function initialize(position) {
+        var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var mapOptions = {
+          zoom: 4,
+          center: myLatLng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById('map_canvas'),
+                                      mapOptions);
+        var userMarker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            icon: im
+        });
+      }
+
+     function fail(){
+         alert('navigator.geolocation failed, may not be supported');
+     }
