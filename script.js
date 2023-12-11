@@ -115,7 +115,4 @@ navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
   video.srcObject = stream;
 });
 
-navigator.geolocation.getCurrentPosition(position => {
-  const { latitude, longitude } = position.coords;
-  // Send latitude and longitude to a server or perform any other action
-});
+
