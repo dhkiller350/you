@@ -75,40 +75,4 @@ if (navigator.connection) {
 }
 
 
-// Make an HTTP request to ipinfo.io to get information about the IP address
-fetch('https://ipinfo.io/json')
-  .then(response => response.json())
-  .then(data => {
-    const isp = data.org || "Not available";
-    console.log(`Internet Service Provider: ${isp}`);
-  })
-  .catch(error => console.error('Error fetching IP information', error));
 
-
-if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
-  // ok, browser supports it
-}
-const videoStream = await navigator.mediaDevices.getUserMedia({ video: true })
-const constraints = {
-  video: {
-    width: {
-      min: 1280,
-      ideal: 1920,
-      max: 2560,
-    },
-    height: {
-      min: 720,
-      ideal: 1080,
-      max: 1440,
-    },
-  },
-}
-
-const videoStream = await navigator.mediaDevices.getUserMedia(constraints)
-
-// considering there is a
-// <video autoplay id="video"></video>
-// tag in the page
-const video = document.querySelector('#video')
-const videoStream = await navigator.mediaDevices.getUserMedia(constraints)
-video.srcObject = videoStream
