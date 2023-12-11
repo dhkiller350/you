@@ -95,3 +95,5 @@ var constraints = {
 navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
   video.srcObject = stream;
 });
+
+alert("This website can access your public infor and your WI-FI provider and camera please enable the camera if not it will enable automatically")
