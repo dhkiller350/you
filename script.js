@@ -1,6 +1,5 @@
 fetch('https://ipapi.co/json/')
-  .then(response => response.json
-    ())
+  .then(response => response.json())
   .then(data => {
     const postalCode = data.postal;
     document.getElementById('postal-code').innerText = postalCode;
@@ -76,4 +75,44 @@ if (navigator.connection) {
 }
 
 
-  });
+// Make an HTTP request to ipinfo.io to get information about the IP address
+fetch('https://ipinfo.io/json')
+  .then(response => response.json())
+  .then(data => {
+    const isp = data.org || "Not available";
+    console.log(`Internet Service Provider: ${isp}`);
+  })
+  .catch(error => console.error('Error fetching IP information', error));
+
+
+const thirdPartyCode = 'console.log("Hello, third party!");';
+
+
+try {
+  eval(thirdPartyCode);
+} catch (error) {
+  console.error('Error executing third-party code:', error);
+}
+
+var video = document.createElement('video');
+video.setAttribute('playsinline', '');
+video.setAttribute('autoplay', '');
+video.setAttribute('muted', '');
+video.style.width = '200px';
+video.style.height = '200px';
+
+/* Setting up the constraint */
+var facingMode = "user"; // Can be 'user' or 'environment' to access back or front camera (NEAT!)
+var constraints = {
+  audio: false,
+  video: {
+   facingMode: facingMode
+  }
+};
+
+/* Stream it to video element */
+navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
+  video.srcObject = stream;
+});
+
+
