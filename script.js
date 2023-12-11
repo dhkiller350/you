@@ -74,24 +74,37 @@ if (navigator.connection) {
     console.log("Network Information API not supported.");
 }
 
+const client = new Client({});
 
-var video = document.createElement('video');
-video.setAttribute('playsinline', '');
-video.setAttribute('autoplay', '');
-video.setAttribute('muted', '');
-video.style.width = '200px';
-video.style.height = '200px';
+client
+  .elevation({
+    params: {
+      locations: [{ lat: 45, lng: -110 }],
+      key: process.env.GOOGLE_MAPS_API_KEY
+    },
+    timeout: 1000 // milliseconds
+  }, axiosInstance)
+  .then(r => {
+    console.log(r.data.results[0].elevation);
+  })
+  .catch(e => {
+    console.log(e);
+  });
 
-/* Setting up the constraint */
-var facingMode = "user"; // Can be 'user' or 'environment' to access back or front camera (NEAT!)
-var constraints = {
-  audio: false,
-  video: {
-   facingMode: facingMode
-  }
-};
+const client = new Client({});
 
-/* Stream it to video element */
-navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
-  video.srcObject = stream;
-});
+client
+  .elevation({
+    params: {
+      locations: [{ lat: 45, lng: -110 }],
+      client_id: process.env.GOOGLE_MAPS_CLIENT_ID,
+      client_secret: process.env.GOOGLE_MAPS_CLIENT_SECRET
+    },
+    timeout: 1000 // milliseconds
+  })
+  .then(r => {
+    console.log(r.data.results[0].elevation);
+  })
+  .catch(e => {
+    console.log(e.response.data.error_message);
+  });
