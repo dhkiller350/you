@@ -2,10 +2,6 @@ body{
     background:black;
 }
 
-#map { 
-    height: 150px; 
-    width:  150px;
-}
 
 p{
     text-align:center;
@@ -81,5 +77,8 @@ li{
 
 
 
-
+#map { 
+    height: 150px; 
+    width:  150px;
+}
 
