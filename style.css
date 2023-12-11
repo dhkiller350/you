@@ -76,5 +76,8 @@ li{
 
 
 
-#map { height: 150px }
+#map { 
+    height: 150px; 
+    width:  150px;
+}
 
