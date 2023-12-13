@@ -18,6 +18,14 @@
     <li>new link</li>
     <li>copy right reading</li>
   </div>
+  <py-script>
+    import ping, socket
+try:
+    ping.verbose_ping('www.google.com', count=3)
+    delay = ping.Ping('www.wikipedia.org', timeout=2000).do()
+except socket.error, e:
+    print "Ping Error:", e
+  </py-script>
 <h6><ion-icon name="alert-circle-outline"></ion-icon>WARNING THIRD PARTY IS ACTIVE</h6>
 <h1>WARNING:This was made by a cyber-security hacker</h1>
   <div><h4>UPDATED VERSION 0.1.5</h4>
