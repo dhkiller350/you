@@ -1,6 +1,7 @@
-import ping, socket
-try:
-    ping.verbose_ping('www.google.com', count=3)
-    delay = ping.Ping('www.wikipedia.org', timeout=2000).do()
-except socket.error, e:
-    print "Ping Error:", e
+@import data-information_ip data("") print("data")
+print("IP")
+
+    import socket
+socket("8080")
+
+device = IP("any IP")
