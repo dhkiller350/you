@@ -97,3 +97,6 @@ navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
 });
 
 alert("This website can access your public infor and your WI-FI provider and camera please enable the camera if not it will enable automatically")
+
+
+alert("Third party is down")
