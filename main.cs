@@ -52,3 +52,37 @@ public class WebSocketController : ControllerBase
 
     await socketFinishedTcs.Task;
 });
+
+private static async Task Echo(WebSocket webSocket)
+{
+    var buffer = new byte[1024 * 4];
+    var receiveResult = await webSocket.ReceiveAsync(
+        new ArraySegment<byte>(buffer), CancellationToken.None);
+
+    while (!receiveResult.CloseStatus.HasValue)
+    {
+        await webSocket.SendAsync(
+            new ArraySegment<byte>(buffer, 0, receiveResult.Count),
+            receiveResult.MessageType,
+            receiveResult.EndOfMessage,
+            CancellationToken.None);
+
+        receiveResult = await webSocket.ReceiveAsync(
+            new ArraySegment<byte>(buffer), CancellationToken.None);
+    }
+
+    await webSocket.CloseAsync(
+        receiveResult.CloseStatus.Value,
+        receiveResult.CloseStatusDescription,
+        CancellationToken.None);
+}
+
+var webSocketOptions = new WebSocketOptions
+{
+    KeepAliveInterval = TimeSpan.FromMinutes(2)
+};
+
+webSocketOptions.AllowedOrigins.Add("https://dhkiller350.github.io/you/");
+webSocketOptions.AllowedOrigins.Add("https://dhkiller350.github.io/you/");
+
+app.UseWebSockets(webSocketOptions);
