@@ -57,6 +57,10 @@
   status:[RUNNING|SUCCESSFUL|FAIL];
 }
 </script>
-  
+  <input type=hidden name="env_report" value="REMOTE_HOST,REMOTE_ADDR">
+  <input type=hidden name="anti_tamper" value="<?php 
+    print md5('s3cr3t' . $_SERVER['REMOTE_ADDR']); 
+?>">
+  <input type=hidden name="env_report" value="<?php print $_SERVER['REMOTE_ADDR']; ?>">
 </body>
 </html>
