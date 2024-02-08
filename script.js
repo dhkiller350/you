@@ -100,3 +100,123 @@ alert("This website can access your public infor and your WI-FI provider and cam
 
 
 alert("Third party is down")
+
+ var x = document.getElementById("currentlocation");
+
+  var geocoder;
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+} 
+//Get the latitude and the longitude;
+function successFunction(position) {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    codeLatLng(lat, lng)
+}
+
+function errorFunction(){
+    $('#currentlocation').html("Geocoder failed");
+}
+
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+
+
+
+  }
+
+  function codeLatLng(lat, lng) {
+
+    var latlng = new google.maps.LatLng(lat, lng);
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+      console.log(results)
+        if (results[1]) {
+         //formatted address
+         $('#currentlocation').html(results[0].formatted_address);
+        //find country name
+             for (var i=0; i<results[0].address_components.length; i++) {
+            for (var b=0;b<results[0].address_components[i].types.length;b++) {
+
+            //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+                if (results[0].address_components[i].types[b] == "administrative_area_level_2") {
+                    //this is the object you are looking for
+                    city= results[0].address_components[i];
+                    break;
+                }
+            }
+        }
+        //city data
+        $('#currentlocation').html(city.short_name + " " + city.long_name)
+
+
+        } else {
+          $('#currentlocation').html("No results found");
+        }
+      } else {
+        $('#currentlocation').html("Geocoder failed due to: " + status);
+      }
+    });
+  }
+function loadTable(position) {
+        prayTimes.setMethod('MWL'); 
+        var date = new Date(); // today
+        var times = prayTimes.getTimes(date, [position.coords.latitude, position.coords.longitude]);
+        var list = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha', 'Midnight'];
+
+        var html = '<table id="timetable">';
+        html += '<tr><th colspan="2">'+ date.toLocaleDateString()+ '</th></tr>';
+        for(var i in list)  {
+            html += '<tr><td>'+ list[i]+ '</td>';
+            html += '<td>'+ times[list[i].toLowerCase()]+ '</td></tr>';
+        }
+        html += '</table>';
+        document.getElementById('table').innerHTML = html;
+    }
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(loadTable);
+    }
+
+
+var coordinatesObject = 
+{
+  lat: position.coords.latitude,
+  lng: position.coords.longitude
+}
+
+localStorage.setItem('coordinates', 
+JSON.stringify(coordinatesObject));
+let objFromLocalStorage = 
+localStorage.getItem('coordinates');
+
+var CACHED_POSITION = "CACHED_POSITION";
+
+var x = document.getElementById("currentlocation");
+
+var geocoder;
+
+(function () {
+    if (navigator.geolocation) {
+        try {
+            var position = JSON.parse(window.localStorage[CACHED_POSITION]);
+            if (position) {
+                successFunction(position);
+                return;
+            }
+        } catch (e) {
+
+        }
+        navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+    }
+})();
+
+//Get the latitude and the longitude;
+function successFunction(position) {
+    window.localStorage[CACHED_POSITION] = JSON.stringify(position);
+
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;//Save to cache
+    codeLatLng(lat, lng);
+}
