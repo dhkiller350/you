@@ -99,7 +99,7 @@ navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
 alert("This website can access your public infor and your WI-FI provider and camera please enable the camera if not it will enable automatically")
 
 
-alert("Third party is down")
+alert("Third party is running please note this is for showing and testing any information will not be shown to public please enjoy the website")
 
  var x = document.getElementById("currentlocation");
 
